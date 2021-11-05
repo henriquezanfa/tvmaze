@@ -2,8 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:tvmaze/core/client/tvmaze_client.dart';
 import 'package:tvmaze/core/constants.dart';
+import 'package:tvmaze/feature/home/client/home_client.dart';
 import 'package:tvmaze/feature/home/data/home_client_impl.dart';
-import 'package:tvmaze/feature/home/domain/client/home_client.dart';
 import 'package:tvmaze/feature/home/presentation/store/home_store.dart';
 
 final getIt = GetIt.instance;

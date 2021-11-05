@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:tvmaze/feature/home/domain/model/serie_model.dart';
+import 'package:tvmaze/commons/model/serie_model.dart';
 
 class SerieCardWidget extends StatelessWidget {
   const SerieCardWidget({

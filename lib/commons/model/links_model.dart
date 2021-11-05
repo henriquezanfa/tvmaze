@@ -1,4 +1,4 @@
-import 'package:tvmaze/feature/home/domain/model/next_episode_model.dart';
+import 'package:tvmaze/commons/model/next_episode_model.dart';
 
 class LinksModel {
   LinksModel({

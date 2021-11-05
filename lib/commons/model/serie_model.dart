@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:tvmaze/feature/home/domain/model/image_model.dart';
-import 'package:tvmaze/feature/home/domain/model/links_model.dart';
-import 'package:tvmaze/feature/home/domain/model/rating_model.dart';
-import 'package:tvmaze/feature/home/domain/model/schedule_model.dart';
+import 'package:tvmaze/commons/model/image_model.dart';
+import 'package:tvmaze/commons/model/links_model.dart';
+import 'package:tvmaze/commons/model/rating_model.dart';
+import 'package:tvmaze/commons/model/schedule_model.dart';
 
 List<SerieModel> serieModelFromJson(String str) =>
     List<SerieModel>.from(json.decode(str).map((x) => SerieModel.fromJson(x)));

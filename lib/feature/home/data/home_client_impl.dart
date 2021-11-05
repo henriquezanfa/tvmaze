@@ -1,6 +1,6 @@
+import 'package:tvmaze/commons/model/serie_model.dart';
 import 'package:tvmaze/core/client/tvmaze_client.dart';
-import 'package:tvmaze/feature/home/domain/client/home_client.dart';
-import 'package:tvmaze/feature/home/domain/model/serie_model.dart';
+import 'package:tvmaze/feature/home/client/home_client.dart';
 
 class HomeClientImpl extends HomeClient {
   final TVMazeClient _client;

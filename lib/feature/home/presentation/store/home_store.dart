@@ -1,6 +1,6 @@
 import 'package:mobx/mobx.dart';
-import 'package:tvmaze/feature/home/domain/client/home_client.dart';
-import 'package:tvmaze/feature/home/domain/model/serie_model.dart';
+import 'package:tvmaze/commons/model/serie_model.dart';
+import 'package:tvmaze/feature/home/client/home_client.dart';
 
 part 'home_store.g.dart';
 
