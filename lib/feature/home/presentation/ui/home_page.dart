@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tvmaze/feature/home/presentation/ui/widgets/home_app_bar_widget.dart';
+import 'package:tvmaze/feature/home/presentation/ui/widgets/series_list_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: const HomeAppBar(),
       body: Column(
-        children: const <Widget>[
+        children: <Widget>[
           Padding(
             padding: EdgeInsets.all(16.0),
             child: Text(
@@ -22,6 +23,7 @@ class _HomePageState extends State<HomePage> {
               style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
             ),
           ),
+          SeriesListWidget(),
         ],
       ),
     );
