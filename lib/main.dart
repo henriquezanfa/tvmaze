@@ -7,6 +7,7 @@ import 'package:tvmaze/feature/home/presentation/ui/home_page.dart';
 
 void main() {
   setup();
+  AppRouter.registerRouters();
 
   runApp(const TVMazeApp());
 }
