@@ -1,6 +1,6 @@
 import 'package:mobx/mobx.dart';
 import 'package:tvmaze/commons/model/serie_model.dart';
-import 'package:tvmaze/feature/home/client/home_client.dart';
+import 'package:tvmaze/feature/home/domain/client/home_client.dart';
 
 part 'home_store.g.dart';
 
@@ -12,7 +12,7 @@ abstract class _HomeStore with Store {
   _HomeStore(this._client);
 
   @observable
-  ObservableFuture? seriesObservableFuture;
+  ObservableFuture? seriesObservableFuture, searchObservableFuture;
 
   @observable
 
@@ -30,24 +30,25 @@ abstract class _HomeStore with Store {
       _completeList = ObservableList();
 
   @observable
-  String? errorMessage;
+  String? errorMessage, search;
 
   @observable
   int currentPage = 0;
 
   @observable
-  bool noMoreSeries = false;
+  bool noMoreSeries = false, hasSearched = false;
 
   /// Amount of series to show each time the user reaches the end of the screen
   int seriesCount = 30;
 
   @action
   void getSeries() {
+    if (hasSearched) return;
     if (filterList.length == _completeList.length) {
       seriesObservableFuture =
           ObservableFuture(_client.getSeries(page: currentPage).then((value) {
-        noMoreSeries = value.isEmpty;
         currentPage++;
+        noMoreSeries = value.isEmpty;
         _completeList.addAll(value);
         filterList.addAll(
           _completeList.sublist(
@@ -67,6 +68,30 @@ abstract class _HomeStore with Store {
         filterList.addAll(
           _completeList.sublist(filterList.length, _completeList.length),
         );
+    }
+  }
+
+  @action
+  void searchSerie(String? search) {
+    if (search != null && search.isNotEmpty && this.search != search) {
+      this.search = search;
+
+      // TODO: change when to trigger because it is making multiple requests if the user inputs change before the previous request is completed
+      searchObservableFuture = ObservableFuture(
+          _client.getSeriesBySearch(search: search).then((value) {
+        noMoreSeries = true;
+        hasSearched = true;
+
+        _completeList
+          ..clear()
+          ..addAll(value);
+        filterList
+          ..clear()
+          ..addAll(value);
+      }).catchError((error) {
+        errorMessage = error.error;
+        noMoreSeries = true;
+      }));
     }
   }
 }

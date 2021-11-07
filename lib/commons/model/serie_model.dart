@@ -30,9 +30,9 @@ class SerieModel {
     this.links,
   });
 
-  int id;
-  String url;
-  String name;
+  int? id;
+  String? url;
+  String? name;
   String? type;
   String? language;
   List<String>? genres;
@@ -50,9 +50,9 @@ class SerieModel {
   LinksModel? links;
 
   factory SerieModel.fromJson(Map<String, dynamic> json) => SerieModel(
-        id: json["id"],
-        url: json["url"],
-        name: json["name"],
+        id: json["id"] == null ? null : json["id"],
+        url: json["url"] == null ? null : json["url"],
+        name: json["name"] == null ? null : json["name"],
         type: json["type"] == null ? null : json["type"],
         language: json["language"] == null ? null : json["language"],
         genres: json["genres"] == null

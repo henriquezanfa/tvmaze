@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
 import 'package:tvmaze/core/di/di.dart';
 import 'package:tvmaze/feature/home/presentation/store/home_store.dart';
+import 'package:tvmaze/feature/home/presentation/ui/widgets/list_loarder_shimmer_widget.dart';
 import 'package:tvmaze/feature/home/presentation/ui/widgets/serie_card_widget.dart';
 
 class SeriesListWidget extends StatefulWidget {
@@ -31,6 +32,10 @@ class _SeriesListWidgetState extends State<SeriesListWidget> {
   Widget build(BuildContext context) {
     return Observer(
       builder: (_) {
+        if (store.searchObservableFuture != null &&
+            store.searchObservableFuture!.status == FutureStatus.pending) {
+          return ListLoarderShimmerWidget();
+        }
         return ListView(
           physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,

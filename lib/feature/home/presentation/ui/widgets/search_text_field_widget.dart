@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tvmaze/core/di/di.dart';
+import 'package:tvmaze/feature/home/presentation/store/home_store.dart';
 
 class SearchTextFieldWidget extends StatefulWidget {
   const SearchTextFieldWidget({
@@ -10,6 +12,8 @@ class SearchTextFieldWidget extends StatefulWidget {
 }
 
 class _SearchTextFieldWidgetState extends State<SearchTextFieldWidget> {
+  final store = getIt<HomeStore>();
+
   final controller = TextEditingController();
   final focus = FocusNode();
 
@@ -18,7 +22,7 @@ class _SearchTextFieldWidgetState extends State<SearchTextFieldWidget> {
     super.initState();
 
     focus.addListener(() => setState(() {}));
-    // controller.addListener(() => store.getSeries(controller.text));
+    controller.addListener(() => store.searchSerie(controller.text));
   }
 
   @override

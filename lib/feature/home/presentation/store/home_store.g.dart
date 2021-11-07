@@ -26,6 +26,23 @@ mixin _$HomeStore on _HomeStore, Store {
     });
   }
 
+  final _$searchObservableFutureAtom =
+      Atom(name: '_HomeStore.searchObservableFuture');
+
+  @override
+  ObservableFuture<dynamic>? get searchObservableFuture {
+    _$searchObservableFutureAtom.reportRead();
+    return super.searchObservableFuture;
+  }
+
+  @override
+  set searchObservableFuture(ObservableFuture<dynamic>? value) {
+    _$searchObservableFutureAtom
+        .reportWrite(value, super.searchObservableFuture, () {
+      super.searchObservableFuture = value;
+    });
+  }
+
   final _$filterListAtom = Atom(name: '_HomeStore.filterList');
 
   @override
@@ -71,6 +88,21 @@ mixin _$HomeStore on _HomeStore, Store {
     });
   }
 
+  final _$searchAtom = Atom(name: '_HomeStore.search');
+
+  @override
+  String? get search {
+    _$searchAtom.reportRead();
+    return super.search;
+  }
+
+  @override
+  set search(String? value) {
+    _$searchAtom.reportWrite(value, super.search, () {
+      super.search = value;
+    });
+  }
+
   final _$currentPageAtom = Atom(name: '_HomeStore.currentPage');
 
   @override
@@ -101,6 +133,21 @@ mixin _$HomeStore on _HomeStore, Store {
     });
   }
 
+  final _$hasSearchedAtom = Atom(name: '_HomeStore.hasSearched');
+
+  @override
+  bool get hasSearched {
+    _$hasSearchedAtom.reportRead();
+    return super.hasSearched;
+  }
+
+  @override
+  set hasSearched(bool value) {
+    _$hasSearchedAtom.reportWrite(value, super.hasSearched, () {
+      super.hasSearched = value;
+    });
+  }
+
   final _$_HomeStoreActionController = ActionController(name: '_HomeStore');
 
   @override
@@ -115,13 +162,27 @@ mixin _$HomeStore on _HomeStore, Store {
   }
 
   @override
+  void searchSerie(String? search) {
+    final _$actionInfo = _$_HomeStoreActionController.startAction(
+        name: '_HomeStore.searchSerie');
+    try {
+      return super.searchSerie(search);
+    } finally {
+      _$_HomeStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 seriesObservableFuture: ${seriesObservableFuture},
+searchObservableFuture: ${searchObservableFuture},
 filterList: ${filterList},
 errorMessage: ${errorMessage},
+search: ${search},
 currentPage: ${currentPage},
-noMoreSeries: ${noMoreSeries}
+noMoreSeries: ${noMoreSeries},
+hasSearched: ${hasSearched}
     ''';
   }
 }

@@ -24,9 +24,32 @@ class SerieCardWidget extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(8.0),
       child: Image.network(
-        serie.image!.medium!,
+        serie.image?.medium ?? "",
         width: double.infinity,
         fit: BoxFit.fitWidth,
+        errorBuilder:
+            (BuildContext context, Object exception, StackTrace? stackTrace) {
+          return Container(
+            height: 300,
+            child: Icon(
+              Icons.image_not_supported_outlined,
+              color: Colors.black,
+            ),
+            foregroundDecoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  const Color(0x88000000),
+                  const Color(0x44000000),
+                  const Color(0x44000000),
+                  const Color(0x88000000),
+                ],
+              ),
+            ),
+            width: double.infinity,
+          );
+        },
         frameBuilder: (_, Widget child, int? frame, bool loaded) {
           return AnimatedSwitcher(
             duration: Duration(milliseconds: 500),
@@ -71,7 +94,7 @@ class SerieCardWidget extends StatelessWidget {
       children: [
         Center(
           child: Text(
-            serie.name.toUpperCase(),
+            '${serie.name?.toUpperCase()}',
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.white,

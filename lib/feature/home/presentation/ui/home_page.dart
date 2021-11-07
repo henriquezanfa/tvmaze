@@ -21,12 +21,13 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
 
-    scrollController.addListener(() {
+    scrollController.addListener(() async {
       if (scrollController.offset >=
               scrollController.position.maxScrollExtent &&
           !scrollController.position.outOfRange) {
         store.getSeries();
       }
+      await Future.delayed(Duration(seconds: 1));
     });
   }
 
