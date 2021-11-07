@@ -14,7 +14,6 @@ class SeriesListWidget extends StatefulWidget {
 
 class _SeriesListWidgetState extends State<SeriesListWidget> {
   final HomeStore store = getIt<HomeStore>()..getSeries();
-  final scrollController = ScrollController();
 
   @override
   void initState() {
@@ -26,35 +25,19 @@ class _SeriesListWidgetState extends State<SeriesListWidget> {
         if (msg != null) showErrorSnack(msg);
       },
     );
-
-    scrollController.addListener(() {
-      if (scrollController.offset >=
-              scrollController.position.maxScrollExtent &&
-          !scrollController.position.outOfRange) {
-        store.getSeries();
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    scrollController.dispose();
-    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Observer(
       builder: (_) {
-        return Expanded(
-          child: ListView(
-            controller: scrollController,
-            shrinkWrap: true,
-            children: [
-              buildSeries(),
-              buildListLoader(),
-            ],
-          ),
+        return ListView(
+          physics: NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          children: [
+            buildSeries(),
+            buildListLoader(),
+          ],
         );
       },
     );
