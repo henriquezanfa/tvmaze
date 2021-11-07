@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:tvmaze/core/routes/navigation_utils.dart';
 import 'package:tvmaze/feature/home/presentation/ui/home_page.dart';
+import 'package:tvmaze/feature/series/presentation/ui/serie_page.dart';
 
 class AppRouter {
   static Map<String, WidgetBuilderArgs?> get routes => {
         '/': (context, args) => const HomePage(),
-        '/search': (context, args) => Container(
-              color: Colors.pink,
-              height: 200,
-              width: 200,
-            ),
+        '/serie-details': (context, args) => SeriePage(id: args as int),
       };
 
   static void registerRouters() {

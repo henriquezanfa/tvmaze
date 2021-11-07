@@ -12,11 +12,17 @@ class SerieCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        buildSerieImage(),
-        buildSerieTitle(),
-      ],
+    return GestureDetector(
+      onTap: () => Navigator.of(context).pushNamed(
+        '/serie-details',
+        arguments: serie.id,
+      ),
+      child: Stack(
+        children: [
+          buildSerieImage(),
+          buildSerieTitle(),
+        ],
+      ),
     );
   }
 

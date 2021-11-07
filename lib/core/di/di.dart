@@ -7,12 +7,14 @@ import 'package:tvmaze/feature/home/domain/client/home_client.dart';
 import 'package:tvmaze/feature/home/presentation/store/home_store.dart';
 import 'package:tvmaze/feature/series/data/client/series_client_impl.dart';
 import 'package:tvmaze/feature/series/domain/client/series_client.dart';
+import 'package:tvmaze/feature/series/presentation/store/series_store.dart';
 
 final getIt = GetIt.instance;
 
 void setup() {
   // Store
   getIt.registerLazySingleton(() => HomeStore(getIt()));
+  getIt.registerLazySingleton(() => SeriesStore(getIt()));
 
   // Client
   getIt.registerLazySingleton<HomeClient>(() => HomeClientImpl(getIt()));
