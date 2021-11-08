@@ -16,7 +16,7 @@ class SummaryWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Text(
                   'Summary',
                   style: TextStyle(fontWeight: FontWeight.bold),

@@ -36,6 +36,15 @@ class SeriePage extends StatelessWidget {
               DetailHeaderWidget(
                 title: serie.name,
                 image: serie.image?.original,
+                actions: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 16.0),
+                    child: GestureDetector(
+                      onTap: () => store.addRemoveToFavorites(),
+                      child: Icon(Icons.favorite_border_outlined),
+                    ),
+                  )
+                ],
               ),
               SliverList(
                 delegate: SliverChildListDelegate(

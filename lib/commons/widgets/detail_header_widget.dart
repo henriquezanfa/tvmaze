@@ -6,15 +6,18 @@ class DetailHeaderWidget extends StatelessWidget {
     required this.title,
     required this.image,
     this.leading,
+    this.actions,
   }) : super(key: key);
 
   final String? title;
   final String? image;
   final Widget? leading;
+  final List<Widget>? actions;
 
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+      actions: actions,
       leading: leading,
       flexibleSpace: FlexibleSpaceBar(
         title: Text('${title}'),
