@@ -3,13 +3,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:tvmaze/commons/model/episode_model.dart';
+import 'package:tvmaze/commons/widgets/detail_header_widget.dart';
+import 'package:tvmaze/commons/widgets/summary_widget.dart';
 import 'package:tvmaze/core/di/di.dart';
 import 'package:tvmaze/feature/series/presentation/store/series_store.dart';
 import 'package:tvmaze/feature/series/presentation/ui/widgets/serie_episodes_widget.dart';
 import 'package:tvmaze/feature/series/presentation/ui/widgets/serie_genres_widget.dart';
-import 'package:tvmaze/feature/series/presentation/ui/widgets/serie_header_widget.dart';
 import 'package:tvmaze/feature/series/presentation/ui/widgets/serie_schedule_widget.dart';
-import 'package:tvmaze/feature/series/presentation/ui/widgets/serie_summary_widget.dart';
 
 class SeriePage extends StatelessWidget {
   final int id;
@@ -33,7 +33,10 @@ class SeriePage extends StatelessWidget {
 
           return CustomScrollView(
             slivers: [
-              SerieHeaderWidget(serie: serie),
+              DetailHeaderWidget(
+                title: serie.name,
+                image: serie.image?.original,
+              ),
               SliverList(
                 delegate: SliverChildListDelegate(
                   [
@@ -42,7 +45,7 @@ class SeriePage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SerieScheduleWidget(serie: serie),
-                        SerieSummaryWidget(serie: serie),
+                        SummaryWidget(summary: serie.summary),
                         SerieEpisodesWidget(episodesBySeason: episodesBySeason),
                       ],
                     ),

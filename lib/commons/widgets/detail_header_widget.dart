@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:tvmaze/commons/model/serie_model.dart';
 
-class SerieHeaderWidget extends StatelessWidget {
-  const SerieHeaderWidget({
+class DetailHeaderWidget extends StatelessWidget {
+  const DetailHeaderWidget({
     Key? key,
-    required this.serie,
+    required this.title,
+    required this.image,
+    this.leading,
   }) : super(key: key);
 
-  final SerieModel serie;
+  final String? title;
+  final String? image;
+  final Widget? leading;
 
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+      leading: leading,
       flexibleSpace: FlexibleSpaceBar(
-        title: Text('${serie.name}'),
+        title: Text('${title}'),
         background: Container(
           foregroundDecoration: BoxDecoration(
             gradient: LinearGradient(
@@ -28,7 +32,7 @@ class SerieHeaderWidget extends StatelessWidget {
             ),
           ),
           child: Image.network(
-            '${serie.image?.original}',
+            '${image}',
             fit: BoxFit.cover,
           ),
         ),

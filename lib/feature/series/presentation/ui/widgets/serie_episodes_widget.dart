@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tvmaze/commons/model/episode_model.dart';
+import 'package:tvmaze/core/routes/navigation_utils.dart';
 
 class SerieEpisodesWidget extends StatelessWidget {
   const SerieEpisodesWidget({
@@ -52,7 +53,9 @@ class SerieEpisodesWidget extends StatelessWidget {
                             ? episodesBySeason[epi]!
                                 .map(
                                   (e) => InkWell(
-                                      onTap: () {},
+                                      onTap: () => Navigator.of(context)
+                                          .pushNamedModal('/episode-details',
+                                              arguments: e),
                                       child: Container(
                                           decoration: BoxDecoration(
                                               border: Border.all(
