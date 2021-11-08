@@ -32,7 +32,9 @@ abstract class _SeriesStore with Store {
       _client.getSerieDetails(id).then(
         (value) async {
           final _episodes = await _client.getEpisodes(id);
-          episodes.addAll(_episodes);
+          episodes
+            ..clear()
+            ..addAll(_episodes);
           return serie = value;
         },
       ),
