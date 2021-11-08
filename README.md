@@ -1,16 +1,19 @@
-# tvmaze
+# TVMaze
 
-A new Flutter project.
+A Flutter challenge.
 
-## Getting Started
+## About the project
 
-This project is a starting point for a Flutter application.
+### What was done
 
-A few resources to get you started if this is your first Flutter project:
+All the minimum requirements were completed. I used MobX for state management, DIO for HTTP requests, and a kind of clean architecture but with shared models between the features.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+The APK on the distribution folder contains the code on v1.0.0 tag, although there are other commits after this version.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+### Issues
+
+There are some known bugs:
+ - When you search there are no pagination;
+ - The profile button doesn't do anything (it was supposed to control the favorites and access to the app);
+ - The favorite button doesn't do anything;
